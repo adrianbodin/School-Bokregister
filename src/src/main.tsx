@@ -7,6 +7,7 @@ import NotFound from "./pages/not-found.tsx";
 import Layout from "./layout.tsx";
 import Login from "./pages/login.tsx";
 import Register from "./pages/register.tsx";
+import IndividualBook from "./pages/individual-book.tsx";
 
 //Here i configure all the routes for react router
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home/>
+      },
+      {
+        path: '/books/:isbn',
+        element: <IndividualBook/>
       },
       {
         path: '/login',

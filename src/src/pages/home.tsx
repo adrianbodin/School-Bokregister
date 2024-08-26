@@ -46,8 +46,13 @@ const Home = () => {
           </thead>
           <tbody className="table-body">
           {books.map(book => (
-            <tr className="book-row">
-              <td><Link to={`/books/${book.isbn}`}>{book.title}</Link></td>
+            <tr className="book-row" key={book.isbn}>
+              <td>
+                <Link
+                  to={`/books/${book.isbn}`}
+                  state={{book}}
+                >{book.title}</Link>
+              </td>
               <td>{book.author}</td>
               <td>{book.isbn}</td>
             </tr>
@@ -56,7 +61,23 @@ const Home = () => {
         </table>
       </div>
       <div>
-        Add here
+        <h2>Lägg till en bok</h2>
+        <hr/>
+        <form>
+          <div className="input-group">
+            <label htmlFor="title">Titel:</label>
+            <input type="text" id="title" name="title" required/>
+          </div>
+          <div className="input-group">
+            <label htmlFor="author">Författare:</label>
+            <input type="text" id="author" name="author" required/>
+          </div>
+          <div className="input-group">
+            <label htmlFor="isbn">ISBN nummer: (Rätt format)</label>
+            <input type="text" id="isbn" name="isbn" required pattern="^\d{3}-\d{10}$"/>
+          </div>
+          <button>Lägg till bok</button>
+        </form>
       </div>
     </section>
   );

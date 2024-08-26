@@ -1,13 +1,17 @@
 table{
-  border: var(--clr-white) solid 1px;
+  border: solid 1px;
   border-radius: 0.5vw;
   padding: 1rem 2rem;
   border-collapse: collapse;
   width: 100%;
 }
 
+td{
+  border-bottom: solid 1px;
+}
+
 .table-head th {
-  border-bottom: var(--clr-white) solid 2px;
+  border-bottom: solid 2px;
   text-align: left;
 }
 
@@ -17,5 +21,18 @@ tbody tr td:first-child{
 
 .book-section{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px) {
+  .book-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.input-group{
+  display:grid;
+  gap:0.125rem;
+  width: 50%;
+  padding-bottom: 0.5rem;
 }

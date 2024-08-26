@@ -9,12 +9,14 @@
   body{
     color: var(--clr-white);
     background-color: var(--clr-dark-grey);
+    border-color: var(--clr-white);
   }
 }
 @media(prefers-color-scheme: light) {
   body {
     color: var(--clr-black);
     background-color: var(--clr-white);
+    border-color: var(--clr-black);
   }
 }
 
@@ -36,7 +38,13 @@ nav ul{
   gap: clamp(1rem, 4vw, 5rem);
 }
 
-.logo span {
+h1{
+  font-size: clamp(2rem, 1.5vw + 1rem, 3rem);
+}
+
+.logo span a {
   font-size: clamp(2rem, 2vw + 1rem, 3rem);
   font-weight: bold;
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /
 }
