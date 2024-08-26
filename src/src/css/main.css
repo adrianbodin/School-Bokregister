@@ -1,0 +1,19 @@
+:root{
+  --clr-dark-grey: #343434;
+  --clr-black: #000000;
+  --clr-white: #F8F8FF;
+  color-scheme: light dark;
+}
+
+@media(prefers-color-scheme: dark){
+  body{
+    color: var(--clr-white);
+    background-color: var(--clr-dark-grey);
+  }
+}
+@media(prefers-color-scheme: light) {
+  body {
+    color: var(--clr-black);
+    background-color: var(--clr-white);
+  }
+}
