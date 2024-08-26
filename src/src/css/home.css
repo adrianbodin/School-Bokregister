@@ -22,6 +22,7 @@ tbody tr td:first-child{
 .book-section{
   display: grid;
   grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
 @media (min-width: 800px) {

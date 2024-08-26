@@ -66,15 +66,34 @@ const Home = () => {
         <form>
           <div className="input-group">
             <label htmlFor="title">Titel:</label>
-            <input type="text" id="title" name="title" required/>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              required
+              placeholder="Animal Farm"
+            />
           </div>
           <div className="input-group">
             <label htmlFor="author">Författare:</label>
-            <input type="text" id="author" name="author" required/>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              required
+              placeholder="George Orwell"
+            />
           </div>
           <div className="input-group">
             <label htmlFor="isbn">ISBN nummer: (Rätt format)</label>
-            <input type="text" id="isbn" name="isbn" required pattern="^\d{3}-\d{10}$"/>
+            <input
+              type="text"
+              id="isbn"
+              name="isbn"
+              required
+              pattern="^\d{3}-\d{10}$"
+              placeholder="978-0061120084"
+            />
           </div>
           <button>Lägg till bok</button>
         </form>

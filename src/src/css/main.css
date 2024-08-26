@@ -20,6 +20,10 @@
   }
 }
 
+body {
+  font-size: clamp(0.875rem, 0.875rem + 0.5vw, 1rem);
+}
+
 .container{
   width: 90vw;
   max-width: 1000px;
@@ -38,9 +42,30 @@ nav ul{
   gap: clamp(1rem, 4vw, 5rem);
 }
 
-h1{
-  font-size: clamp(2rem, 1.5vw + 1rem, 3rem);
+/* Setup some default sizes that scale with clamp.
+   i have just started learning about them.       */
+h1 {
+  font-size: clamp(1.75rem, 2vw + 1rem, 2.5rem);
 }
+h2 {
+  font-size: clamp(1.5rem, 1.5vw + 1rem, 2rem);
+}
+h3 {
+  font-size: clamp(1.25rem, 1.25vw + 1rem, 1.75rem);
+}
+h4 {
+  font-size: clamp(1.125rem, 1vw + 1rem, 1.5rem);
+}
+h5 {
+  font-size: clamp(1rem, 0.875vw + 1rem, 1.25rem);
+}
+h6 {
+  font-size: clamp(0.875rem, 0.75vw + 1rem, 1rem);
+}
+button, input, textarea, select, label {
+    font-size: clamp(0.875rem, 0.875rem + 0.25vw, 1rem);
+}
+
 
 .logo span a {
   font-size: clamp(2rem, 2vw + 1rem, 3rem);
