@@ -17,3 +17,26 @@
     background-color: var(--clr-white);
   }
 }
+
+.container{
+  width: 90vw;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+nav ul{
+  display: flex;
+  gap: clamp(1rem, 4vw, 5rem);
+}
+
+.logo span {
+  font-size: clamp(2rem, 2vw + 1rem, 3rem);
+  font-weight: bold;
+}

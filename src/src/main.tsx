@@ -4,7 +4,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './css/main.css'
 import Home from "./pages/home.tsx";
 import NotFound from "./pages/not-found.tsx";
-import Layout from "./pages/layout.tsx";
+import Layout from "./layout.tsx";
+import Login from "./pages/login.tsx";
+import Register from "./pages/register.tsx";
 
 //Here i configure all the routes for react router
 const router = createBrowserRouter([
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home/>
+      },
+      {
+        path: '/login',
+        element: <Login/>
+      },
+      {
+        path: '/register',
+        element: <Register/>
       }
     ]
   }
