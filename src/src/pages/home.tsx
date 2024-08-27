@@ -32,6 +32,20 @@ const Home = () => {
       isbn: "978-0316769488"
     }
   ])
+
+  //This will post to a endpoint when i implement the api later in the project.
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const newBook: Book = {
+      title: (form.elements.namedItem('title') as HTMLInputElement).value,
+      author: (form.elements.namedItem('author') as HTMLInputElement).value,
+      isbn: (form.elements.namedItem('isbn') as HTMLInputElement).value,
+    };
+    setBooks(prevBooks => [...prevBooks, newBook]);
+    form.reset();
+  };
+
   return (
     <section className="book-section">
       <div>
@@ -63,7 +77,7 @@ const Home = () => {
       <div>
         <h2>Lägg till en bok</h2>
         <hr/>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="title">Titel:</label>
             <input
@@ -85,7 +99,7 @@ const Home = () => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="isbn">ISBN nummer: (Rätt format)</label>
+            <label htmlFor="isbn">ISBN nummer:</label>
             <input
               type="text"
               id="isbn"
@@ -93,9 +107,10 @@ const Home = () => {
               required
               pattern="^\d{3}-\d{10}$"
               placeholder="978-0061120084"
+              title="ISBN måste ha rätt format, tex 158-1587723489"
             />
           </div>
-          <button>Lägg till bok</button>
+          <button type="submit">Lägg till bok</button>
         </form>
       </div>
     </section>

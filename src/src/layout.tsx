@@ -15,7 +15,7 @@ const Layout = () => {
         </nav>
       </header>
       <main><Outlet/></main>
-      <footer>Footer</footer>
+      <footer><span>Bokregister {new Date().getFullYear()} &copy;</span></footer>
     </div>
   );
 };

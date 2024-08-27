@@ -34,6 +34,5 @@ tbody tr td:first-child{
 .input-group{
   display:grid;
   gap:0.125rem;
-  width: 50%;
   padding-bottom: 0.5rem;
 }

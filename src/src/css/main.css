@@ -28,6 +28,9 @@ body {
   width: 90vw;
   max-width: 1000px;
   margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
 }
 
 header{
@@ -37,9 +40,17 @@ header{
   margin-bottom: 4rem;
 }
 
+footer{
+  margin-bottom: 1rem;
+}
+
 nav ul{
   display: flex;
+  list-style: none;
   gap: clamp(1rem, 4vw, 5rem);
+}
+nav ul a {
+  color: inherit;
 }
 
 /* Setup some default sizes that scale with clamp.
@@ -62,7 +73,7 @@ h5 {
 h6 {
   font-size: clamp(0.875rem, 0.75vw + 1rem, 1rem);
 }
-button, input, textarea, select, label {
+button, input, textarea, select, label, a {
     font-size: clamp(0.875rem, 0.875rem + 0.25vw, 1rem);
 }
 
