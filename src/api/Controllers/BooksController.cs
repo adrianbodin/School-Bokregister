@@ -28,4 +28,20 @@ public class BooksController : ControllerBase
 
         return Ok(books);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> AddBook([FromBody] Book book)
+    {
+        var existingBook = await _db.Books.FirstOrDefaultAsync(b => b.Isbn == book.Isbn);
+
+        if (existingBook is not null)
+        {
+            return Conflict("A book with the same ISBN already exists.");
+        }
+
+        _db.Books.Add(book);
+        await _db.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetIndividualBook), new { isbn = book.Isbn }, book);
+    }
 }
