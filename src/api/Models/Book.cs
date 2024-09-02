@@ -5,7 +5,9 @@ namespace BokRegister.Api.Models;
 public class Book
 {
     [Key]
-    public int Id { get; set; }
+    [Required]
+    [MaxLength(13)]
+    public required string Isbn { get; set; }
 
     [Required]
     [MaxLength(100)]
@@ -14,8 +16,4 @@ public class Book
     [Required]
     [MaxLength(100)]
     public required string Author { get; set; }
-
-    [Required]
-    [MaxLength(100)]
-    public required string Isbn { get; set; }
 }
