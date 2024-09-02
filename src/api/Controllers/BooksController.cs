@@ -17,7 +17,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> AllBooks()
+    public async Task<IActionResult> GetAllBooks()
     {
         List<Book> books = await _db.Books.AsNoTracking().ToListAsync();
 
