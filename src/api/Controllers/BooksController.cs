@@ -58,4 +58,27 @@ public class BooksController : ControllerBase
         return Ok(book);
     }
 
+    [HttpPut("{isbn}")]
+    public async Task<IActionResult> UpdateIndividualBook([FromBody] Book book, string isbn)
+    {
+        if (book.Isbn != isbn)
+        {
+            return BadRequest("The isbn of the route does not match with the isbn of the book in the body of the request.");
+        }
+
+        var existingBook = await _db.Books.FirstOrDefaultAsync(b => b.Isbn == isbn);
+
+        if (existingBook is null)
+        {
+            return NotFound($"There was no book with that isbn: {isbn}");
+        }
+
+        existingBook.Title = book.Title;
+        existingBook.Author = book.Author;
+        existingBook.Isbn = existingBook.Isbn;
+        await _db.SaveChangesAsync();
+
+        return NoContent();
+    }
+
 }
