@@ -17,13 +17,23 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllBooks()
+    public async Task<IActionResult> GetAllBooks([FromQuery] string? searchString)
     {
-        List<Book> books = await _db.Books.AsNoTracking().ToListAsync();
+        var query = _db.Books.AsNoTracking();
+
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            query = query.Where(b =>
+                b.Title.ToLower().Contains(searchString.ToLower())
+                ||
+                b.Author.ToLower().Contains(searchString.ToLower()));
+        }
+
+        List<Book> books = await query.ToListAsync();
 
         if (books is null || books.Count == 0)
         {
-            return NotFound("The books could not be found");
+            return NotFound("No books could be found");
         }
 
         return Ok(books);
