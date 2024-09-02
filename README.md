@@ -2,7 +2,6 @@
 
 ## Kort sammanfattning
 
----
 
 Applikationen använder sig av React med React-router-dom för att hantera routing. Listar upp några roliga saker med
 applikationen under:
@@ -13,7 +12,6 @@ applikationen under:
 
 ## För att köra applikationen
 
----
 
 1. Clona ner repositoriet: 
     ```bash
