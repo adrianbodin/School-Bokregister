@@ -1,4 +1,7 @@
+using BokRegister.Api.Data;
+using BokRegister.Api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BokRegister.Api.Controllers;
 
@@ -6,5 +9,23 @@ namespace BokRegister.Api.Controllers;
 [Route("/books")]
 public class BooksController : ControllerBase
 {
+    private readonly ApplicationDbContext _db;
 
+    public BooksController(ApplicationDbContext db)
+    {
+        _db = db;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> AllBooks()
+    {
+        List<Book> books = await _db.Books.AsNoTracking().ToListAsync();
+
+        if (books is null || books.Count == 0)
+        {
+            return NotFound("The books could not be found");
+        }
+
+        return Ok(books);
+    }
 }
