@@ -81,4 +81,19 @@ public class BooksController : ControllerBase
         return NoContent();
     }
 
+    [HttpDelete("{isbn}")]
+    public async Task<IActionResult> DeleteIndividualBook(string isbn)
+    {
+        var existingBook = await _db.Books.FirstOrDefaultAsync(b => b.Isbn == isbn);
+
+        if (existingBook is null)
+        {
+            return NotFound($"The book with isbn: {isbn} could not be found");
+        }
+
+        _db.Books.Remove(existingBook);
+        await _db.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
