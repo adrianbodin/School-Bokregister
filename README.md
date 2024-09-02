@@ -22,6 +22,7 @@ applikationen under:
     ```bash
     cd School-Bokregister
     cd src
+    cd frontend
     ```
 
 3. Installera dependencies och skapa node_modules lokalt:
