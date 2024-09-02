@@ -44,4 +44,18 @@ public class BooksController : ControllerBase
 
         return CreatedAtAction(nameof(GetIndividualBook), new { isbn = book.Isbn }, book);
     }
+
+    [HttpGet("{isbn}")]
+    public async Task<IActionResult> GetIndividualBook(string isbn)
+    {
+        var book = await _db.Books.FirstOrDefaultAsync(b => b.Isbn == isbn);
+
+        if (book is null)
+        {
+            return NotFound($"Book not found with isbn: {isbn}");
+        }
+
+        return Ok(book);
+    }
+
 }
