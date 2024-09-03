@@ -36,3 +36,14 @@ tbody tr td:first-child{
   gap:0.125rem;
   padding-bottom: 0.5rem;
 }
+
+.search-group{
+  display: grid;
+}
+
+.filter-container{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}

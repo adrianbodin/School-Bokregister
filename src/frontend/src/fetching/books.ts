@@ -1,6 +1,6 @@
 import {Book} from "../types/book.ts";
 
-type SortBy = "title" | "author";
+export type SortBy = "title" | "author";
 
 const apiEndpoint: string = "https://localhost:7101";
 
@@ -28,8 +28,8 @@ export async function getIndividualBook(isbn : string) : Promise<Book>{
 
   if(!response.ok){
     throw new Error("Failed to fetch the book")
-  }
 
+  }
   return await response.json();
 }
 
