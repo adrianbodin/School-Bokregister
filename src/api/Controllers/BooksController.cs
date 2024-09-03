@@ -17,9 +17,19 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllBooks([FromQuery] string? searchString)
+    public async Task<IActionResult> GetAllBooks([FromQuery] string? searchString,[FromQuery] string? sortBy)
     {
         var query = _db.Books.AsNoTracking();
+
+        if (!string.IsNullOrEmpty(sortBy))
+        {
+            query = sortBy switch
+            {
+                "title" => query.OrderBy(b => b.Title),
+                "author" => query.OrderBy(b => b.Author),
+                _ => query
+            };
+        }
 
         if (!string.IsNullOrEmpty(searchString))
         {
