@@ -5,33 +5,7 @@ import {Link} from "react-router-dom";
 
 const Home = () => {
   //pull these from the api later
-  const [books, setBooks] = useState<Book[]>([
-    {
-      title: "To Kill a Mockingbird",
-      author: "Harper Lee",
-      isbn: "978-0061120084"
-    },
-    {
-      title: "1984",
-      author: "George Orwell",
-      isbn: "978-0451524935"
-    },
-    {
-      title: "The Great Gatsby",
-      author: "F. Scott Fitzgerald",
-      isbn: "978-0743273565"
-    },
-    {
-      title: "Pride and Prejudice",
-      author: "Jane Austen",
-      isbn: "978-1503290563"
-    },
-    {
-      title: "The Catcher in the Rye",
-      author: "J.D. Salinger",
-      isbn: "978-0316769488"
-    }
-  ])
+  const [books, setBooks] = useState<Book[]>([])
 
   //This will post to a endpoint when i implement the api later in the project.
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
