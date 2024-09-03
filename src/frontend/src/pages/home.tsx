@@ -1,23 +1,32 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Book} from "../types/book.ts";
 import '../css/home.css'
 import {Link} from "react-router-dom";
+import {deleteBook, getAllBooks} from "../fetching/books.ts";
+import AddBookForm from "../components/AddBookForm.tsx";
 
 const Home = () => {
   //pull these from the api later
   const [books, setBooks] = useState<Book[]>([])
 
-  //This will post to a endpoint when i implement the api later in the project.
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const newBook: Book = {
-      title: (form.elements.namedItem('title') as HTMLInputElement).value,
-      author: (form.elements.namedItem('author') as HTMLInputElement).value,
-      isbn: (form.elements.namedItem('isbn') as HTMLInputElement).value,
-    };
-    setBooks(prevBooks => [...prevBooks, newBook]);
-    form.reset();
+  useEffect(() => {
+    getAllBooks()
+      .then((data) => {
+        setBooks(data)
+      })
+  }, []);
+
+  const addBookToState = (newBook: Book) => {
+    setBooks((prevBooks) => [...prevBooks, newBook]);
+  };
+
+  const removeBook = (isbn: string) => async () => {
+    const answer = confirm("Are you sure you want to delete the book?");
+
+    if(answer){
+      await deleteBook(isbn);
+      setBooks((prevBooks) => prevBooks.filter(book => book.isbn !== isbn));
+    }
   };
 
   return (
@@ -30,6 +39,7 @@ const Home = () => {
             <th scope="col">Boktitel</th>
             <th scope="col">Författare</th>
             <th scope="col">ISBN</th>
+            <th scope="col"></th>
           </tr>
           </thead>
           <tbody className="table-body">
@@ -43,50 +53,13 @@ const Home = () => {
               </td>
               <td>{book.author}</td>
               <td>{book.isbn}</td>
+              <td><button onClick={removeBook(book.isbn)}>Ta bort</button></td>
             </tr>
           ))}
           </tbody>
         </table>
       </div>
-      <div>
-        <h2>Lägg till en bok</h2>
-        <hr/>
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="title">Titel:</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              required
-              placeholder="Animal Farm"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="author">Författare:</label>
-            <input
-              type="text"
-              id="author"
-              name="author"
-              required
-              placeholder="George Orwell"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="isbn">ISBN nummer:</label>
-            <input
-              type="text"
-              id="isbn"
-              name="isbn"
-              required
-              pattern="^\d{3}-\d{10}$"
-              placeholder="978-0061120084"
-              title="ISBN måste ha rätt format, tex 158-1587723489"
-            />
-          </div>
-          <button type="submit">Lägg till bok</button>
-        </form>
-      </div>
+      <AddBookForm addBookToState={addBookToState}/>
     </section>
   );
 };
