@@ -16,7 +16,6 @@ public class ApplicationDbContext : DbContext
 
         SeedBooks(modelBuilder);
     }
-
     private void SeedBooks(ModelBuilder builder)
     {
         builder.Entity<Book>().HasData([
