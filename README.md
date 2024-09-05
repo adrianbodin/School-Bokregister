@@ -10,8 +10,22 @@ applikationen under:
 - Css `clamp` för att få text responsiv, men att texten även har en minimum och maximum storlek.
 - Native input `pattern` som med hjälp av regex gör att inputen måste vara 3 nummer- 10 nummer långt och i exakt lika format.
 
-## För att köra applikationen
+## För att köra applikationen enklast
 
+1. Clona ner repositoriet och navigera in i mappen: 
+    ```bash
+    git clone https://github.com/adrianbodin/School-Bokregister
+    cd School-Bokregister
+    ```
+2. Kör Make kommando för att starta både apiet och frontenden samtidigt.
+    ```bash
+    make dev
+    ```
+> [!NOTE]
+> Du måste ha make installerat för att kunna köra kommandot.
+
+
+## För att köra applikationen andra sättet
 
 1. Clona ner repositoriet: 
     ```bash
