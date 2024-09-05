@@ -49,3 +49,8 @@
     ```bash
     npm run dev
     ```
+5. Öppna en ny terminal och navigera till /src/api och kör:
+    ```bash
+    dotnet run
+    ```
+6. Nu borde både react applikationen och apiet köras.
