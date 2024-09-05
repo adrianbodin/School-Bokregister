@@ -3,12 +3,13 @@
 ## Kort sammanfattning
 
 
-Applikationen använder sig av React med React-router-dom för att hantera routing. Listar upp några roliga saker med
-applikationen under:
+### Frontenden använder sig av React med React-router-dom för att hantera routing. Listar upp några roliga saker medfrontenden under:
 
 - Använder sig av `prefers-color-scheme` i css för att ändra bakgrunden efter vad användaren föredrar i browsern dark/light.
 - Css `clamp` för att få text responsiv, men att texten även har en minimum och maximum storlek.
 - Native input `pattern` som med hjälp av regex gör att inputen måste vara 3 nummer- 10 nummer långt och i exakt lika format.
+
+### 
 
 ## För att köra applikationen enklast
 
