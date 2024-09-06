@@ -1,0 +1,18 @@
+.book-info-container{
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.edit-isbn-container{
+  margin-bottom: 1rem;
+}
+
+.button-container{
+  display: flex;
+  gap: 1rem;
+}
+
+hr{
+  margin-bottom: 1rem;
+}

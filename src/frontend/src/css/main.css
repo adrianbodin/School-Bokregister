@@ -124,8 +124,6 @@ span{
   display: block;
 }
 
-.book-info-container{
-  display: grid;
-  gap: 1rem;
-  margin-bottom: 2rem;
+button{
+  padding: 0.5rem 1rem;
 }

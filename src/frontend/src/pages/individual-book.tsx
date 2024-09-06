@@ -2,6 +2,7 @@ import { useLocation, useNavigate} from "react-router-dom";
 import {deleteBook, updateBook} from "../fetching/books.ts";
 import {useState} from "react";
 import '../css/main.css'
+import '../css/individual-book.css'
 
 
 //todo, maybe fetch the book here, because if i update a book, the values dont seem right.
@@ -13,7 +14,7 @@ const IndividualBook = () => {
   const [book, setBook] = useState(location.state?.book || {});
 
   const removeBook = (isbn: string) => async () => {
-    const answer = confirm("Are you sure you want to delete the book?");
+    const answer = confirm("Är du säker på att du vill ta bort boken?");
 
     if(answer){
       await deleteBook(isbn);
@@ -31,7 +32,8 @@ const IndividualBook = () => {
     };
 
     await updateBook(updatedBook);
-    setBook(updatedBook)
+    setEditing(false);
+    setBook(updatedBook);
   }
 
   if(!book) return <div>Book not found</div>
@@ -39,7 +41,7 @@ const IndividualBook = () => {
   return (
     <section>
       {editing ? (
-        <div>
+        <div className="book-info-container">
           <form onSubmit={(e) => editBook(e)}>
             <div className="edit-title-container">
               <label htmlFor="title"><h1>Titel: </h1></label>
@@ -63,10 +65,12 @@ const IndividualBook = () => {
           <h3>ISBN: <span>- {book.isbn}</span></h3>
         </div>
       )}
-      <button onClick={() => setEditing(prev => !prev)}>
-        {editing ? "Avbryt redigering" : "Redigera"}
-      </button>
-      <button onClick={removeBook(book.isbn)}>Ta bort</button>
+      <div className="button-container">
+        <button onClick={() => setEditing(prev => !prev)}>
+          {editing ? "Avbryt redigering" : "Redigera"}
+        </button>
+        <button onClick={removeBook(book.isbn)}>Ta bort</button>
+      </div>
     </section>
   );
 };

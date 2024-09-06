@@ -43,6 +43,7 @@ const Home = () => {
     <section className="book-section">
       <div>
         <h1>Alla böcker</h1>
+        <hr/>
         <div className="filter-container">
           <select onChange={(e) => sortBooks(e.target.value as SortBy)} name="sort" id="sort-select">
             <option value="">Sortera efter:</option>
